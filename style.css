@@ -1,0 +1,778 @@
+/* Genel stil ayarları */
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box; /* Kenar çerçeveleri düzenle */
+  font-family: "Open Sans", sans-serif;
+}
+
+/* Topbar stil ayarları */
+#topbar {
+  background-color: #f8f9fa; /* Açık gri renk */
+  color: #000; /* Siyah metin */
+  height: 40px;
+  font-size: 14px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: 0 15px;
+  transition: top 0.5s ease-in-out; /* Yavaş geçiş efekti */
+}
+
+/* İletişim bilgileri stil ayarları */
+#topbar .contact-info {
+  display: flex;
+  align-items: center;
+}
+
+#topbar .contact-info img {
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+}
+
+/* E-posta bağlantısı için stil */
+#topbar .contact-info a {
+  color: #000; /* Siyah metin */
+  text-decoration: none; /* Alt çizgiyi tamamen kaldır */
+}
+
+#topbar .contact-info a:hover {
+  text-decoration: none; /* Hover durumunda da alt çizgiyi kaldır */
+}
+
+/* Sosyal medya ikonlarının stili */
+#topbar .social-links a {
+  margin-left: 15px;
+  display: inline-block;
+  color: #101460;
+}
+
+#topbar .social-links a img {
+  width: 24px;
+  height: 24px;
+  filter: grayscale(100%); /* Gri ikon */
+  transition: filter 0.3s, transform 0.3s; /* Hover efektleri için */
+}
+
+#topbar .social-links a img:hover {
+  filter: none; /* Renkli ikon */
+  transform: scale(1.1); /* Hafif büyütme efekti */
+}
+
+/* Navbar stil ayarları */
+.navbar {
+  background-color: #fff;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 40px; /* Topbar'ın hemen altına hizala */
+  left: 0;
+  right: 0;
+  z-index: 998;
+  transition: top 0.5s ease-in-out; /* Yavaş geçiş efekti */
+}
+
+/* Navbar menü linkleri */
+.navbar-nav .nav-link {
+  color: #2c4964;
+  font-size: 14px;
+  padding: 10px 15px;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: #101460; /* Hover ve aktif linkler için lacivert renk */
+}
+
+/* Navbar mobil menü butonu */
+.navbar-toggler {
+  border: none;
+}
+
+.dropdown-menu .dropdown-submenu:hover > .dropdown-menu {
+  display: block; /* Alt menü hover ile görünür */
+}
+
+/* Buton stil ayarları (Giriş Yap, Kayıt Ol, vb.) */
+.btn-primary {
+  background-color: #101460; /* Lacivert arka plan */
+  border-color: #101460; /* Lacivert border */
+  color: white; /* Beyaz yazı */
+  border-radius: 80px; /* Oval şekil */
+  padding: 10px 20px; /* Butonun içi */
+  font-size: 14px; /* Buton yazı boyutu */
+  text-decoration: none; /* Alt çizgi yok */
+}
+
+.btn-primary:hover {
+  background-color: #166ab5; /* Hover durumunda açık lacivert */
+  border-color: #166ab5; /* Hover border rengi */
+}
+
+/* Hero bölümü */
+#hero {
+  width: 100%;
+  height: 90vh; /* Ekranın %90 yüksekliği */
+  background: url("img/y.jpg") top center no-repeat ; /* Arka plan ayarı */
+  background-size: cover;
+  margin: 0; /* Varsayılan dış boşlukları kaldır */
+  padding: 0; /* İç boşlukları kaldır */
+  position: relative;
+  margin-top: 80px; /* Topbar (40px) ve Navbar (40px) boşluğunu dengele */
+  z-index: 1; /* Üstte görünmesini sağla */
+  
+}
+
+#hero .container {
+  position: relative;
+}
+
+#hero h1 {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 700;
+  line-height: 56px;
+  text-transform: uppercase;
+  color: #101460;
+}
+
+#hero h2 {
+  color: #101460;
+  margin: 10px 0 0 0;
+  font-size: 24px;
+}
+
+/* Hero butonları */
+#hero .btn-get-started {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 35px;
+  margin-top: 30px;
+  border-radius: 50px;
+  transition: 0.5s;
+  color: #fff;
+  background: #101460;
+  text-decoration: none; /* Alt çizgiyi tamamen kaldır */
+}
+
+#hero .btn-get-started:hover {
+  background: #3291e6;
+  text-decoration: none; /* Hover durumunda da alt çizgiyi kaldır */
+}
+
+@media (min-width: 1024px) {
+  #hero {
+    background-attachment: fixed;
+  }
+}
+
+/* Hakkımızda düğmesi */
+.why-us .content .more-btn {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 30px 8px 30px;
+  color: #fff;
+  border-radius: 50px;
+  transition: all ease-in-out 0.4s;
+  text-decoration: none; /* Alt çizgiyi tamamen kaldır */
+}
+
+.why-us .content .more-btn:hover {
+  color: #101460;
+  background: #fff;
+  text-decoration: none; /* Hover durumunda da alt çizgiyi kaldır */
+}
+
+/* Neden Biz Bölümü */
+.why-us .content {
+  padding: 30px;
+  background: #101460;
+  border-radius: 4px;
+  color: #fff;
+}
+
+.why-us .content h3 {
+  font-weight: 700;
+  font-size: 34px;
+  margin-bottom: 30px;
+}
+
+.why-us .icon-boxes .icon-box {
+  text-align: center;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+  padding: 40px 30px;
+  width: 100%;
+}
+
+.why-us .icon-boxes .icon-box i {
+  font-size: 40px;
+  color: #101460;
+  margin-bottom: 30px;
+}
+
+.why-us .icon-boxes .icon-box i:hover {
+  color: #3291e6;
+  transform: scale(1.1);
+  transition: 0.3s;
+}
+
+.why-us .icon-boxes .icon-box h4 {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 30px 0;
+}
+
+.why-us .icon-boxes .icon-box p {
+  font-size: 15px;
+  color: #848484;
+}
+
+/* About Section */
+.about .icon-boxes h4 {
+  font-size: 18px;
+  color: #101460;
+  margin-bottom: 15px;
+}
+
+.about .icon-boxes h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #101460;
+  margin-bottom: 15px;
+}
+
+.about .icon-box {
+  margin-top: 40px;
+}
+
+.about .icon-box .icon {
+  float: left;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border: 2px solid #8dc2f1;
+  border-radius: 50px;
+  transition: 0.5s;
+}
+
+.about .icon-box .icon i {
+  color: #101460;
+  font-size: 32px;
+}
+
+.about .icon-box:hover .icon {
+  background: #101460;
+  border-color: #101460;
+}
+
+.about .icon-box:hover .icon i {
+  color: #fff;
+}
+
+.about .icon-box .title {
+  margin-left: 85px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+
+.about .icon-box .title a {
+  color: #101460;
+  transition: 0.3s;
+}
+
+.about .icon-box .title a:hover {
+  color: #101460;
+}
+
+.about .icon-box .description {
+  margin-left: 85px;
+  line-height: 24px;
+  font-size: 14px;
+}
+
+.about .video-box {
+  background: url("img/parmak.png") center center no-repeat;
+  background-size: cover;
+  min-height: 500px;
+}
+
+.about .play-btn {
+  width: 94px;
+  height: 94px;
+  background: radial-gradient(#101460 50%, rgba(25, 119, 204, 0.4) 52%);
+  border-radius: 50%;
+  display: block;
+  position: absolute;
+  left: calc(50% - 47px);
+  top: calc(50% - 47px);
+  overflow: hidden;
+}
+
+.about .play-btn::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translateX(-40%) translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 15px solid #fff;
+  z-index: 100;
+  transition: all 400ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
+}
+
+.about .play-btn::before {
+  content: "";
+  position: absolute;
+  width: 120px;
+  height: 120px;
+  animation: pulsate-btn 2s infinite forwards;
+  border-radius: 50%;
+  border: 5px solid rgba(25, 119, 204, 0.7);
+  top: -15%;
+  left: -15%;
+  background: rgba(198, 16, 0, 0);
+}
+
+@keyframes pulsate-btn {
+  0% {
+    transform: scale(0.6, 0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1, 1);
+    opacity: 0;
+  }
+}
+.counts {
+  background: #f1f7fd;
+  padding: 70px 0 60px;
+}
+.counts .count-box {
+  padding: 30px 30px 25px 30px;
+  width: 100%;
+  position: relative;
+  text-align: center;
+  background: #fff;
+}
+.counts .count-box i {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 20px;
+  background: #101460;
+  color: #fff;
+  border-radius: 50px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+.counts .count-box span {
+  font-size: 36px;
+  display: block;
+  font-weight: 600;
+  color: #082744;
+}
+.counts .count-box p {
+  padding: 0;
+  margin: 0;
+  font-family: "Raleway", sans-serif;
+  font-size: 14px;
+}
+/* Gallery Section */
+#gallery {
+  padding: 60px 0;
+  background-color: #f7f7f7;
+}
+
+.gallery .section-title h2 {
+  font-size: 36px;
+  text-align: center;
+  margin-bottom: 40px;
+  color: #101460;
+  font-weight: bold;
+}
+
+.gallery .gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.gallery .gallery-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease-in-out, opacity 0.3s ease;
+  border-radius: 10px;
+}
+
+/* Hover effect: scale the image */
+.gallery .gallery-item:hover img {
+  transform: scale(1.1);
+  opacity: 0.9;
+}
+
+
+/* Add a zoom icon when hovering */
+.gallery .gallery-item:hover .zoom-icon {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Icon style */
+.gallery .zoom-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 40px;
+  color: #fff;
+  opacity: 0;
+  transition: all 0.4s ease-in-out;
+  z-index: 2;
+}
+
+/* Responsive layout */
+@media (max-width: 992px) {
+  .gallery .gallery-item {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .gallery .gallery-item {
+    margin-bottom: 10px;
+  }
+}
+
+/* Contact Section */
+.contact .info {
+  width: 100%;
+  background: #fff;
+  padding: 30px; /* Boşluk ekledim */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Kutuların daha belirgin olmasını sağladım */
+  border-radius: 10px; /* Yumuşak köşeler ekledim */
+}
+
+.contact .info i {
+  font-size: 20px;
+  color: #101460;
+  float: left;
+  width: 44px;
+  height: 44px;
+  background: #d6e9fa;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: all 0.3s ease-in-out;
+  margin-right: 15px; /* İkonlar arasına boşluk ekledim */
+}
+
+.contact .info h4 {
+  padding: 0 0 0 60px;
+  font-size: 22px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  color: #2c4964;
+}
+
+.contact .info p {
+  padding: 0 0 0 60px;
+  margin-bottom: 0;
+  font-size: 14px;
+  color: #4b7dab;
+}
+
+/* Hover efekti */
+.contact .info .email:hover i,
+.contact .info .address:hover i,
+.contact .info .phone:hover i {
+  background: #101460;
+  color: #fff;
+  transform: scale(1.1); /* Hover efektine biraz büyüme ekledim */
+}
+
+.contact .php-email-form {
+  width: 100%;
+  background: #fff;
+  padding: 30px; /* Form için de boşluk ekledim */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Form kutusunun etrafına gölge ekledim */
+  border-radius: 10px;
+}
+
+.contact .php-email-form .form-group {
+  padding-bottom: 8px;
+  margin-bottom: 15px; /* Alanlar arasına boşluk ekledim */
+}
+
+.contact .php-email-form .error-message,
+.contact .php-email-form .sent-message {
+  display: none;
+  color: #fff;
+  font-weight: 600;
+  padding: 15px;
+  text-align: center;
+  border-radius: 10px; /* Mesaj kutularına köşe yuvarlama ekledim */
+}
+
+.contact .php-email-form .error-message {
+  background: #ed3c0d;
+}
+
+.contact .php-email-form .sent-message {
+  background: #18d26e;
+}
+
+.contact .php-email-form .loading {
+  display: none;
+  background: #fff;
+  text-align: center;
+  padding: 15px;
+}
+
+.contact .php-email-form .loading:before {
+  content: "";
+  display: inline-block;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  margin: 0 10px -6px 0;
+  border: 3px solid #18d26e;
+  border-top-color: #eee;
+  -webkit-animation: animate-loading 1s linear infinite;
+  animation: animate-loading 1s linear infinite;
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea {
+  border-radius: 10px; /* Girdi kutularının köşelerini yuvarladım */
+  box-shadow: none;
+  font-size: 14px;
+  padding: 12px;
+  border: 1px solid #ddd;
+  width: 100%; /* Alan genişliğini %100 yaptım */
+  transition: border-color 0.3s ease;
+}
+
+.contact .php-email-form input:focus,
+.contact .php-email-form textarea:focus {
+  border-color: #101460; /* Odaklanıldığında renk değişimi */
+  outline: none;
+}
+
+.contact .php-email-form input {
+  height: 44px;
+}
+
+.contact .php-email-form textarea {
+  padding: 10px 12px;
+  height: 150px; /* Textarea'ya yükseklik verdim */
+}
+
+.contact .php-email-form button[type=submit] {
+  background: #101460;
+  border: 0;
+  padding: 10px 35px;
+  color: #fff;
+  transition: 0.4s;
+  border-radius: 50px;
+  cursor: pointer; /* Butona tıklanabilir görünümü ekledim */
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background: #5558ad;
+}
+
+@-webkit-keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes animate-loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.contact .info .address,
+.contact .info .email,
+.contact .info .phone {
+  margin-bottom: 70px; /* iconlar arası boşluk */
+}
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+#footer {
+  color: #444444;
+  font-size: 14px;
+  background: #f1f7fd;
+}
+#footer .footer-top {
+  padding: 60px 0 30px 0;
+  background: #fff;
+  box-shadow: 0px 2px 15px rgba(25, 119, 204, 0.1);
+}
+#footer .footer-top .footer-contact {
+  margin-bottom: 30px;
+}
+#footer .footer-top .footer-contact h4 {
+  font-size: 22px;
+  margin: 0 0 30px 0;
+  padding: 2px 0 2px 0;
+  line-height: 1;
+  font-weight: 700;
+}
+#footer .footer-top .footer-contact p {
+  font-size: 14px;
+  line-height: 24px;
+  margin-bottom: 0;
+  font-family: "Raleway", sans-serif;
+  color: #777777;
+}
+#footer .footer-top h4 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #444444;
+  position: relative;
+  padding-bottom: 12px;
+}
+#footer .footer-top .footer-links {
+  margin-bottom: 30px;
+}
+#footer .footer-top .footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#footer .footer-top .footer-links ul i {
+  padding-right: 2px;
+  color: #5558ad;
+  font-size: 18px;
+  line-height: 1;
+}
+#footer .footer-top .footer-links ul li {
+  padding: 10px 0;
+  display: flex;
+  align-items: center;
+}
+#footer .footer-top .footer-links ul li:first-child {
+  padding-top: 0;
+}
+#footer .footer-top .footer-links ul a {
+  color: #777777;
+  transition: 0.3s;
+  display: inline-block;
+  line-height: 1;
+}
+#footer .footer-top .footer-links ul a:hover {
+  text-decoration: none;
+  color: #101460;
+}
+#footer .footer-newsletter {
+  font-size: 15px;
+}
+#footer .footer-newsletter h4 {
+  font-size: 16px;
+  font-weight: bold;
+  color: #444444;
+  position: relative;
+  padding-bottom: 12px;
+}
+#footer .footer-newsletter form {
+  margin-top: 30px;
+  background: #fff;
+  padding: 6px 10px;
+  position: relative;
+  border-radius: 50px;
+  text-align: left;
+  border: 1px solid #bfdcf7;
+}
+#footer .footer-newsletter form input[type=email] {
+  border: 0;
+  padding: 4px 8px;
+  width: calc(100% - 100px);
+}
+#footer .footer-newsletter form input[type=submit] {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border: 0;
+  background: none;
+  font-size: 16px;
+  padding: 0 20px;
+  background: #101460;
+  color: #fff;
+  transition: 0.3s;
+  border-radius: 50px;
+}
+#footer .footer-newsletter form input[type=submit]:hover {
+  background: #5558ad;
+}
+#footer .credits {
+  padding-top: 5px;
+  font-size: 13px;
+  color: #444444;
+}
+#footer .social-links a {
+  font-size: 18px;
+  display: inline-block;
+  background: #101460;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  margin-right: 4px;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.3s;
+}
+#footer .social-links a:hover {
+  background: #5558ad;
+  color: #fff;
+  text-decoration: none;
+}
+
+#topbar .contact-info i {
+  margin-right: 5px; /* İkon ile metin arasında boşluk */
+}
+
+#topbar .contact-info a {
+  margin-right: 15px; /* Telefon ve e-posta arasında boşluk */
+}
+
+/* register alanı */
+
+
