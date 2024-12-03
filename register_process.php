@@ -1,6 +1,7 @@
 <?php
 require_once "db.php"; // Veritabanı bağlantısını dahil et
 
+// Formdan gelen verileri al
 $name = trim($_POST['name']);
 $surname = trim($_POST['surname']);
 $email = trim($_POST['email']);
@@ -14,19 +15,25 @@ if ($password !== $confirm_password) {
     exit;
 }
 
-// Şifreyi hashle
-$hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
 // Kullanıcıyı veritabanına ekle
-$sql = "INSERT INTO users (Name, SurName, Password, Email, UserType, Phone, CreatedAt)
-        VALUES (?, ?, ?, ?, 'Customer', ?, NOW())";
+$sql = "INSERT INTO users (Name, SurName, Email, Phone, Password, UserType, CreatedAt)
+        VALUES (?, ?, ?, ?, ?, 'customer', NOW())";
 
 $stmt = $conn->prepare($sql);
 
 if ($stmt) {
-    $stmt->execute([$name, $surname, $hashed_password, $email, $phone]);
-    echo "<script>alert('Kayıt başarılı! Giriş yapabilirsiniz.'); window.location.href = 'login.php';</script>";
+    $stmt->bind_param("sssss", $name, $surname, $email, $phone, $password);
+
+    if ($stmt->execute()) {
+        echo "<script>alert('Kayıt başarılı! Giriş yapabilirsiniz.'); window.location.href = 'login.php';</script>";
+    } else {
+        echo "<script>alert('Kayıt sırasında bir hata oluştu! Lütfen tekrar deneyin.'); window.location.href = 'register.php';</script>";
+    }
+
+    $stmt->close();
 } else {
-    echo "<script>alert('Kayıt sırasında bir hata oluştu! Lütfen tekrar deneyin.'); window.location.href = 'register.php';</script>";
+    echo "Hata: " . $conn->error;
 }
+
+$conn->close();
 ?>

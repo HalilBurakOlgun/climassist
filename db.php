@@ -1,13 +1,15 @@
 <?php
-$servername = "localhost"; // MySQL sunucu adı
-$username = "root";         // phpMyAdmin kullanıcı adı
-$password = "";             // phpMyAdmin şifresi (boşsa boş bırakın)
-$dbname = "climassistdb";  // Veritabanı adı
+$servername = "localhost"; // MySQL Sunucu adı (phpMyAdmin genelde localhost'tur)
+$username = "root";        // phpMyAdmin kullanıcı adı
+$password = "";            // phpMyAdmin şifresi (şifre genelde boş gelir)
+$dbname = "climassistdb";  // phpMyAdmin'de oluşturduğun veritabanı adı
 
-try {
-    $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-} catch (PDOException $e) {
-    die("Veritabanı bağlantısı başarısız: " . $e->getMessage());
+// Bağlantıyı oluştur
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+// Bağlantıyı kontrol et
+if ($conn->connect_error) {
+    die("Bağlantı başarısız: " . $conn->connect_error);
 }
+echo "Bağlantı başarılı!";
 ?>
