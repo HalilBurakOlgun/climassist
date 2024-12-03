@@ -145,49 +145,43 @@
         
     </style>
 </head>
-
 <body>
+    <div class="wrapper">
+        <div class="main-menu">
+            <a href="index.php">
+                <i class="bi bi-x-circle"></i>
+            </a>
+        </div>
 
- <div class="wrapper">
-  <div class="main-menu">
-    <a href="index.html">
-        <i class="bi bi-x-circle"></i>
-    </a>
-</div>
-  <form action="">
-    <h1><b>Giriş Yap</b></h1>
-    <div class="input-box">
-      <input type="text" placeholder="Kullanıcı Adı" required>
-      <i class="bi bi-person-circle"></i>
+        <form action="login_process.php" method="post">
+            <h1><b>Giriş Yap</b></h1>
+            <div class="input-box">
+                <input type="text" name="email" placeholder="Email" required>
+                <i class="bi bi-person-circle"></i>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" placeholder="Şifre" required>
+                <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <div class="remember-forgot">
+                <label><input type="checkbox">Beni Hatırla</label>
+                <a href="#">Şifrenizi mi unuttunuz?</a>
+            </div>
+
+            <button type="submit" class="btn-primary">Giriş Yap</button>
+
+            <div class="register-link">
+                <p>Hesabınız yok mu? <a href="register.php">Kayıt Ol</a></p>
+            </div>
+        </form>
     </div>
-    <div class="input-box">
-      <input type="text" placeholder="Şifre" required>
-      <i class="bi bi-shield-lock-fill"></i>
-    </div>
-    <div class="remember-forgot">
-    <label><input type="checkbox">Beni Hatırla</label>
-    <a href="#">Şifrenizi mi unuttunuz?</a>
-  </div>
 
-  <button type="submit" class="btn-primary">Giriş Yap</button>
-  
-  <div class="register-link">
-  <p>Hesabınız yok mu? <a href="register.html">Kayıt Ol</a></p>
-  </div>
-  </form>
-
- </div>
-
- 
-
-
-   <!-- Vendor JS Files -->
-   <script src="vendor/purecounter/purecounter.js"></script>
-   <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-   <script src="vendor/glightbox/js/glightbox.min.js"></script>
-   <script src="vendor/swiper/swiper-bundle.min.js"></script>
-   <script src="vendor/php-email-form/validate.js"></script>
-
+    <!-- Vendor JS Files -->
+    <script src="vendor/purecounter/purecounter.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="vendor/php-email-form/validate.js"></script>
 </body>
 
 </html>

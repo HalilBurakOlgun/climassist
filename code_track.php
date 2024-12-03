@@ -134,10 +134,10 @@
     <div class="wrapper">
         <form id="trackForm" onsubmit="return validateCode()">
             <div class="main-menu">
-    <a href="index.html">
-        <i class="bi bi-x-circle"></i>
-    </a>
-</div>
+                <a href="index.html">
+                    <i class="bi bi-x-circle"></i>
+                </a>
+            </div>
             <h1><b>Kod Takip</b></h1>
             <div class="input-box">
                 <input id="trackingCode" type="text" placeholder="Takip Kodunuzu Girin" maxlength="8" required>
@@ -159,18 +159,36 @@
     <script src="vendor/php-email-form/validate.js"></script>
 
     <!-- JavaScript -->
-    <script>
+     <script>
         function validateCode() {
             const code = document.getElementById("trackingCode").value;
-
-            // Check if the code is exactly 8 digits long and numeric
-            if (/^\d{8}$/.test(code)) {
-                alert("Kod geçerli, yönlendiriliyorsunuz...");
-                return true; // Form is valid
-            } else {
-                alert("Lütfen yalnızca 8 haneli bir sayı giriniz!");
-                return false; // Form is invalid
+            if (code.length !== 8) {
+                alert("Lütfen 8 haneli bir takip kodu giriniz!");
+                return false;
             }
+
+            fetch("check_tracking_code.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded"
+                },
+                body: `trackingCode=${encodeURIComponent(code)}`
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.status === "success") {
+                    alert("Başarılı: " + data.message);
+                    window.location.href = `track_code.php?trackingCode=${encodeURIComponent(code)}`;
+                } else {
+                    alert("Hata: " + data.message);
+                }
+            })
+            .catch(error => {
+                console.error("Bir hata oluştu:", error);
+                alert("Sunucuyla iletişim sırasında bir hata oluştu. Lütfen tekrar deneyiniz.");
+            });
+
+            return false;
         }
     </script>
 </body>

@@ -1,49 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kayıt Ol</title>
-  
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-  
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
     <!-- Favicons -->
     <link href="img/favicon.png" rel="icon">
     <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
-  
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-  
+
     <!-- Özel CSS -->
     <link href="style.css" rel="stylesheet">
 
-      <!-- Vendor CSS Files -->
-      <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
-      <link href="vendor/animate.css/animate.min.css" rel="stylesheet">
-      <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-      <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-      <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-      <link href="vendor/remixicon/remixicon.css" rel="stylesheet">
-      <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  
-      <style>
-        *{
+    <!-- Vendor CSS Files -->
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet">
+    <link href="vendor/animate.css/animate.min.css" rel="stylesheet">
+    <link href="vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <style>
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: "Open Sans", sans-serif;
         }
-        body{
+
+        body {
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vd;
+            min-height: 100vh;
             background: url(img/2.jpg) no-repeat;
             background-size: cover;
             background-position: center;
         }
-        .wrapper{
+
+        .wrapper {
             width: 750px;
             border-radius: 10px;
             color: black;
@@ -51,31 +56,35 @@
             border: 2px solid rgba(255, 255, 255, .2);
             background: rgba(173, 160, 160, 0.1);
             backdrop-filter: blur(50px);
-        }   
+        }
+
         @media (max-width: 576px) {
             .input-box .input-field {
                 width: 100%;
-                margin: 10px 0 ;
+                margin: 10px 0;
             }
         }
 
-        .wrapper h1{
+        .wrapper h1 {
             font-size: 36px;
             text-align: center;
             margin-bottom: 0px;
         }
-        .wrapper .input-box{
+
+        .wrapper .input-box {
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
         }
-        .input-box .input-field{
+
+        .input-box .input-field {
             position: relative;
             width: 48%;
             height: 50px;
-            margin: 15px 0; 
+            margin: 15px 0;
         }
-        .input-box .input-field input{
+
+        .input-box .input-field input {
             width: 100%;
             height: 100%;
             background: transparent;
@@ -86,52 +95,57 @@
             border-radius: 40px;
             padding: 15px 15px 15px 40px;
         }
-        .input-box .input-field input::placeholder{
-            color:black;
+
+        .input-box .input-field input::placeholder {
+            color: black;
         }
-        .input-box .input-field i{
+
+        .input-box .input-field i {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
             left: 15px;
         }
-        .wrapper label{
+
+        .wrapper label {
             font-size: 14.5px;
             display: inline-block;
             margin: 10px 0 23px;
         }
 
-        .wrapper label input { 
+        .wrapper label input {
             accent-color: grey;
             margin-right: 10px;
         }
 
-        .wrapper .btn-primary{
+        .wrapper .btn-primary {
             width: 100%;
             height: 45px;
             box-shadow: 0 0 10px rgba(0, 0, 0, .1);
             border: none;
             outline: none;
-            font-weight: 600px;
+            font-weight: 600;
             color: #fff;
             font-size: 16px;
         }
-        
+
         .register-link p a {
-          color:navy;
-          text-decoration: none;
-          font-weight: 600;
-          margin: 5px;
+            color: navy;
+            text-decoration: none;
+            font-weight: 600;
+            margin: 5px;
         }
 
-        .register-link p a:hover{
-          text-decoration: underline;
+        .register-link p a:hover {
+            text-decoration: underline;
         }
-        .wrapper .register-link{
-          font-size: 14.5px;
-          text-align: center;
-          margin: 20px 0 15px;
+
+        .wrapper .register-link {
+            font-size: 14.5px;
+            text-align: center;
+            margin: 20px 0 15px;
         }
+
         .error-message {
             position: fixed;
             top: 50%;
@@ -147,12 +161,11 @@
             display: none;
             box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.3);
         }
-        .main-menu i{
+
+        .main-menu i {
             color: #101460;
-            
-            
         }
-      </style>
+    </style>
 
 </head>
 <body>
@@ -160,21 +173,21 @@
     <div class="wrapper">
 
         <div class="main-menu">
-            <a href="index.html">
+            <a href="index.php">
                 <i class="bi bi-x-circle"></i>
             </a>
         </div>
 
         <h1><b>Kayıt Ol</b></h1>
 
-        <form>
+        <form action="register_process.php" method="post">
             <div class="input-box">
                 <div class="input-field">
-                    <input type="text" name="first_name" placeholder="Ad" required>
+                    <input type="text" name="name" placeholder="Ad" required>
                     <i class="bi bi-person"></i>
                 </div>
                 <div class="input-field">
-                    <input type="text" name="last_name" placeholder="Soyad" required>
+                    <input type="text" name="surname" placeholder="Soyad" required>
                     <i class="bi bi-person-fill"></i>
                 </div>
             </div>
@@ -185,8 +198,7 @@
                     <i class="bi bi-envelope-fill"></i>
                 </div>
                 <div class="input-field">
-                    <input type="tel" name="phone" placeholder="Telefon Numarası (05XX1112233)" pattern="[0-9]{10}"
-                        required>
+                    <input type="tel" name="phone" placeholder="Telefon Numarası (05XX1112233)" required>
                     <i class="bi bi-telephone-fill"></i>
                 </div>
             </div>
@@ -208,7 +220,7 @@
             <button type="submit" class="btn-primary">Kayıt Ol</button>
 
             <div class="register-link">
-                <p>Zaten hesabınız var mı? <a href="login.html">Giriş Yap</a></p>
+                <p>Zaten hesabınız var mı? <a href="login.php">Giriş Yap</a></p>
             </div>
         </form>
 
@@ -236,5 +248,6 @@
     </script>
 
 </body>
+
 
 </html>
