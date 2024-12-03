@@ -1,9 +1,9 @@
 <?php
 include 'db.php';
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Formdan gelen verileri al
-    $userId = $_SESSION['id'] ?? null; // Giriş yapan kullanıcı varsa
+    $userId = $_SESSION['user_id'] ?? null; // Giriş yapan kullanıcı varsa
     $username = $_POST['username'];
     $usersurname = $_POST['usersurname'];
     $email = $_POST['email'];
@@ -12,25 +12,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $requestType = $_POST['requesttype'];
     $sparePartType = $_POST['spareparttype'] ?? null;
     $recoveryTime = $_POST['recoverytime'] ?? null;
-    $unitType = $_POST['unit'] ?? null;
-    $message = $_POST['message'] ?? null;
+    $unitType= $_POST['unittype'] ?? null;
+    $message = $_POST['message'];
+    $status = 'Pending'; // Varsayılan durum
+    $trackingCode = uniqid(); // Benzersiz takip kodu oluştur
 
-    // 8 haneli rastgele takip kodu oluştur
-    $trackingCode = strtoupper(bin2hex(random_bytes(4)));
+    // Talebi veritabanına ekle
+    $sql = "INSERT INTO requests (UserId, UserName, UserSurName, Email, ClientType, Phone, RequestType, SparePartType, RecoveryTime, UnitType, Message, Status, TrackingCode, CreatedAt)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";
 
-    // SQL sorgusu
-    $sql = "INSERT INTO requests (UserId, UserName, UserSurname, Email, ClientType, Phone, RequestType, SparePartType, RecoveryTime, UnitType, Message, Status, TrackingCode, CreatedAt) 
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, NOW())";
     $stmt = $conn->prepare($sql);
 
-    $stmt->bind_param("isssssssssss", $userId, $username, $usersurname, $email, $clientType, $phone, $requestType, $sparePartType, $recoveryTime, $unitType, $message, $trackingCode);
-
-    if ($stmt->execute()) {
-        // Başarıyla kayıt olunca yönlendirme yap
-        header("Location: track_code.php?code=$trackingCode");
-        exit();
+    if ($stmt) {
+        $stmt->execute([$userId, $username, $usersurname, $email, $clientType, $phone, $requestType, $sparePartType, $recoveryTime, $unitType, $message, $status, $trackingCode]);
+        echo "<script>alert('Talep başarıyla gönderildi! Takip kodunuz: $trackingCode'); window.location.href = 'index.php';</script>";
     } else {
-        echo "Hata: " . $stmt->error;
+        echo "<script>alert('Talep gönderme sırasında bir hata oluştu! Lütfen tekrar deneyin.'); window.location.href = 'submit_request.php';</script>";
     }
 }
 ?>
