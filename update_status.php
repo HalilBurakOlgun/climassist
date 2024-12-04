@@ -1,41 +1,36 @@
 <?php
 session_start();
-include('db_connection.php'); // Veritabanı bağlantısı
+require_once 'db.php'; // Veritabanı bağlantısı
 
-// Giriş yapılmamışsa login sayfasına yönlendir
+// Kullanıcı giriş yapmamışsa login.php'ye yönlendir
 if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
+    header("Location: login.php");
+    exit();
 }
 
-// Kullanıcı yetkisi kontrolü (admin veya staff olması gerekir)
-$user_type = $_SESSION['user_type'];
-if ($user_type != 'admin' && $user_type != 'staff') {
-    header('Location: show_request.php'); // Yetkisiz kullanıcıyı kendi taleplerine yönlendir
-    exit;
+$userId = $_SESSION['user_id'];
+$userType = $_SESSION['user_type'];
+
+// Sadece Admin ve Staff kullanıcıları durumu değiştirebilir
+if ($userType != 'Admin' && $userType != 'Staff') {
+    header("Location: show_request.php"); // Yetkisiz erişim, talepleri görüntüleme sayfasına yönlendir
+    exit();
 }
 
-// Taleple ilgili işlemi yapalım
-if (isset($_GET['id']) && isset($_GET['status'])) {
-    $request_id = $_GET['id'];
-    $status = $_GET['status'];
+// Durum güncelleme işlemi
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $requestId = $_POST['request_id'];
+    $status = $_POST['status'];
 
-    // Geçerli bir durum var mı kontrol et
-    $valid_statuses = ['pending', 'in_progress', 'completed', 'rejected'];
-    if (in_array($status, $valid_statuses)) {
-        // Durumu güncelle
-        $sql = "UPDATE requests SET status = :status WHERE id = :id";
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute(['status' => $status, 'id' => $request_id]);
+    $sql = "UPDATE requests SET Status = ? WHERE Id = ?";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("si", $status, $requestId);
 
-        // Başarı mesajı
-        header('Location: show_request.php');
-        exit;
+    if ($stmt->execute()) {
+        header("Location: show_request.php");
+        exit();
     } else {
-        // Geçersiz durum
-        echo "Geçersiz bir durum seçtiniz.";
+        echo "Durum güncellenirken bir hata oluştu.";
     }
-} else {
-    // Parametreler eksikse hata mesajı
-    echo "Geçersiz işlem.";
 }
+?>

@@ -53,8 +53,7 @@ session_start();
       </div>
     </div>
   </div>
-
-  <!-- Navbar -->
+<!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top">
     <div class="container">
         <a class="navbar-brand" href="index.php">
@@ -85,6 +84,12 @@ session_start();
                     <li class="nav-item">
                         <a href="show_request.php" class="btn btn-primary ms-3">Taleplerimi Görüntüle</a>
                     </li>
+                    <!-- Adminler İçin Kullanıcı Ekle Butonu -->
+                    <?php if (isset($_SESSION['user_type']) && $_SESSION['user_type'] === 'Admin'): ?>
+                        <li class="nav-item">
+                            <a href="add_user.php" class="btn btn-primary ms-3">Kullanıcı Ekle</a>
+                        </li>
+                    <?php endif; ?>
                 <?php else: ?>
                     <!-- Giriş ve Kayıt Ol Butonları -->
                     <li class="nav-item">
@@ -106,8 +111,6 @@ session_start();
         </div>
     </div>
 </nav>
-
-
 
 
 
