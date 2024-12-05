@@ -120,8 +120,8 @@ session_start();
     <h1>Merhabalar,</h1>
     <h2>Size nasıl yardımcı olabiliriz?</h2><br>
     <p>Samsung klimalarınızın ihtiyaç duyabileceği orijinal yedek parçalar ve hizmetler için seçim yaparak hızlı bir başlangıç yapabilirsiniz.</p>
-    <a href="#about" class="btn-get-started scrollto">Bakım teklifi almak istiyorum</a>
-    <a href="#about" class="btn-get-started scrollto">Servis talebim var</a>
+    <a href="request_form.php" class="btn-get-started scrollto">Bakım teklifi almak istiyorum</a>
+    <a href="request_form.php" class="btn-get-started scrollto">Servis talebim var</a>
   </div>
 </section>
 <!-- End Hero -->
