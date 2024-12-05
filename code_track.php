@@ -140,7 +140,7 @@
             </div>
             <h1><b>Kod Takip</b></h1>
             <div class="input-box">
-                <input id="trackingCode" type="text" placeholder="Takip Kodunuzu Girin" maxlength="8" required>
+                <input id="trackingCode" type="text" placeholder="Takip Kodunuzu Girin" required>
                 <i class="bi bi-upc-scan"></i>
             </div>
             <button type="submit" class="btn-primary">Takip Et</button>
@@ -159,14 +159,11 @@
     <script src="vendor/php-email-form/validate.js"></script>
 
     <!-- JavaScript -->
-     <script>
+    <script>
         function validateCode() {
             const code = document.getElementById("trackingCode").value;
-            if (code.length !== 8) {
-                alert("Lütfen 8 haneli bir takip kodu giriniz!");
-                return false;
-            }
-
+            
+            // Kodun uzunluğunu burada kontrol etmiyoruz, doğrudan göndereceğiz
             fetch("check_tracking_code.php", {
                 method: "POST",
                 headers: {
