@@ -72,6 +72,9 @@ $users = fetchUsers($conn, $roleFilter);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kullanıcı Yönetimi</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Favicons -->
+    <link href="img/favicon.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
     <style>
         html, body {
             margin: 0;
