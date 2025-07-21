@@ -130,7 +130,7 @@
 </head>
 
 <body>
-
+    <?php include 'header.php'; ?>    
     <div class="wrapper">
         <form id="trackForm" onsubmit="return validateCode()">
             <div class="main-menu">

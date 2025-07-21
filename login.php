@@ -54,7 +54,7 @@
           margin: 0 10px;
           border: 2px solid rgba(255, 255, 255, .2);
           background: rgba(173, 160, 160, 0.1);
-          backdrop-filter: blur(50px)
+          backdrop-filter: blur(50px);
         
         }
         .wrapper h1{
@@ -139,13 +139,12 @@
         } 
         .main-menu i{
             color: #101460;
-            
-            
         }
         
     </style>
 </head>
 <body>
+  <?php include 'header.php'; ?>
     <div class="wrapper">
         <div class="main-menu">
             <a href="index.php">

@@ -12,8 +12,10 @@ require_once 'db.php'; // Veritabanı bağlantısı
 $userId = $_SESSION['user_id'];
 $userType = $_SESSION['user_type']; // Admin, Staff ya da Customer olarak ayarladık
 
-// Kullanıcının taleplerini getir
-$sql = "SELECT * FROM requests WHERE UserId = ? OR 'Staff' = ? OR 'Admin' = ?";
+// Kullanıcının taleplerini getir (en son gerçekleşen talep en üstte)
+$sql = "SELECT * FROM requests 
+        WHERE UserId = ? OR 'Staff' = ? OR 'Admin' = ? 
+        ORDER BY CreatedAt DESC"; // CreatedAt'e göre ters sıralama
 $stmt = $conn->prepare($sql);
 $stmt->bind_param("iss", $userId, $userType, $userType);
 $stmt->execute();
@@ -33,45 +35,34 @@ $result = $stmt->get_result();
             background-color: #f8f9fa;
             font-family: Arial, sans-serif;
         }
-
         .navbar {
             border-bottom: 1px solid #ddd;
         }
-
         .card {
             border: none;
             border-radius: 10px;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
-
         .card:hover {
             transform: translateY(-5px);
             box-shadow: 0px 6px 10px rgba(0, 0, 0, 0.15);
         }
-
         .card-title {
             color: #0056b3;
             font-weight: bold;
             margin-bottom: 10px;
         }
-
         .card-text {
             font-size: 14px;
             margin-bottom: 8px;
         }
-
         .container h2 {
             color: #333;
             text-align: center;
             font-weight: bold;
             margin-bottom: 30px;
         }
-
-        p {
-            margin: 0;
-        }
-
         /* Buton ayarları */
         .btn-primary {
             background-color: #0056b3;
@@ -80,21 +71,16 @@ $result = $stmt->get_result();
             padding: 8px 20px;
             font-size: 14px;
         }
-
         .btn-primary:hover {
             background-color: #003d80;
             color: #fff;
         }
-
-        /* Durum değiştirme formu */
         .status-select {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
             border-radius: 4px;
         }
-
-        /* Responsive düzen */
         @media (max-width: 768px) {
             .card {
                 margin-bottom: 20px;
@@ -134,14 +120,8 @@ $result = $stmt->get_result();
                             <div class="card-body">
                                 <h5 class="card-title">Talep ID: <?php echo htmlspecialchars($row['Id']); ?></h5>
                                 <p class="card-text"><strong>Talep Türü:</strong> <?php echo htmlspecialchars($row['RequestType']); ?></p>
-                                <p class="card-text"><strong>Yedek Parça:</strong> <?php echo htmlspecialchars($row['SparePartType']); ?></p>
                                 <p class="card-text"><strong>Durum:</strong> <?php echo htmlspecialchars($row['Status']); ?></p>
                                 <p class="card-text"><strong>Oluşturulma Tarihi:</strong> <?php echo htmlspecialchars($row['CreatedAt']); ?></p>
-                                <p class="card-text"><strong>İsim:</strong> <?php echo htmlspecialchars($row['UserName']); ?></p>
-                                <p class="card-text"><strong>Soyisim:</strong> <?php echo htmlspecialchars($row['UserSurname']); ?></p>
-                                <p class="card-text"><strong>Telefon:</strong> <?php echo htmlspecialchars($row['Phone']); ?></p>
-                                <p class="card-text"><strong>Email:</strong> <?php echo htmlspecialchars($row['Email']); ?></p>
-
                                 <?php if ($userType == 'Admin' || $userType == 'Staff'): ?>
                                     <form action="update_status.php" method="POST">
                                         <input type="hidden" name="request_id" value="<?php echo $row['Id']; ?>">
@@ -163,7 +143,6 @@ $result = $stmt->get_result();
             <?php endif; ?>
         </div>
     </div>
-
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
 </body>
